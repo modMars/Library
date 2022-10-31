@@ -1,5 +1,19 @@
+:root{
+    box-sizing: border-box;
+}
+
 .form_card{
     position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 350px;
+    background-color: #2f2f3f;
+    color: white;
+    padding: 30px 30px;
+    border-radius: 10px;
+    /*Turn translate to -50%, -50% to display form in the middle.*/
+    transform: translate(-50%, -50%);
 }
 
 #addBook{
@@ -13,7 +27,16 @@
     margin-top: 10px;
 }
 
-#read span{
-    display: flex;
+#radial{
+    display: inline;
+    width: 70px;
 }
 
+input {
+    opacity: 0.7;
+}
+
+#submit{
+    width: 80px;
+    align-self: center;
+}

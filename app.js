@@ -10,17 +10,20 @@ function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.read = read;
 }
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  const Yes = document.querySelector("#Yes");
+  const No = document.querySelector("#No");
+  Yes.checked === true ? (readInput = Yes) : (readInput = No);
   newBook = new Book(
     titleInput.value,
     authorInput.value,
     pagesInput.value,
     readInput.value
   );
-  console.log(readInput);
   Library.push(newBook);
   form.reset();
   console.log(Library);
