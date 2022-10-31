@@ -1,0 +1,19 @@
+.form_card{
+    position: absolute;
+}
+
+#addBook{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+}
+
+#addBook > input, #addBook > select{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+#read span{
+    display: flex;
+}
+
