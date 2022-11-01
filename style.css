@@ -1,6 +1,81 @@
 :root{
     box-sizing: border-box;
+    color: white;
+    /*--background: #2f2f3f;
+      --accent: #9BBBE3*/
+    --background: #758e93;
+    --accent: #9eb3b3;
+    --foreground: #c9d8d5;
+
 }
+
+html{
+    padding:0;
+    margin:0;
+}
+
+body{
+    background: var(--background);
+    z-index: 1;
+}
+
+a{
+    color: var(--foreground);
+    text-decoration: none;
+}
+
+
+
+header{
+    display: flex;
+    position: sticky;
+    justify-content: left;
+}
+
+.mainContent{
+    display: grid;
+    min-height: 100vh;
+    gap: 5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 264px));
+    grid-template-rows: repeat(auto-fit, minmax(250px, 400px));
+    /* overflow: auto; */
+     margin: 30px 60px;
+    /* padding: 0 20px; */
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    border-radius: 10px;
+    background-color: var(--foreground);
+    min-height: 400px;
+    transition: all 0.5s ease;
+}
+
+
+.card:hover{
+
+}
+
+#addBookCard{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#addBookCard:hover > .fa-plus{
+    font-size: 6.5rem;
+}
+
+.fa-plus{
+    font-size: 5rem;
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
 
 .form_card{
     position: absolute;
@@ -8,12 +83,22 @@
     left: 50%;
     width: 300px;
     height: 350px;
-    background-color: #2f2f3f;
-    color: white;
+    background-color: var(--background);
+    color: var(--foreground);
     padding: 30px 30px;
     border-radius: 10px;
+}
+
+#hidden{
+    /*Turn translate to -50%, -50% to display form in the middle.*/
+    transform: translate(-50%, -1500%);
+}
+
+#shown{
     /*Turn translate to -50%, -50% to display form in the middle.*/
     transform: translate(-50%, -50%);
+    filter: blur(0px) !important;
+    z-index: 0;
 }
 
 #addBook{
