@@ -10,7 +10,7 @@
 }
 
 html{
-
+    font-family: 'Karla', sans-serif;
 }
 
 body{
@@ -56,11 +56,12 @@ input {
 h1{
     margin: 0px;
     padding: 0px;
-    font-size: 1.3rem;
+    font-size: 1.9rem;
 }
 
 .bookImg{
     display: block;
+    transition:all 1s ease;
     height: 50%;
     width:100%;
 }
@@ -70,11 +71,9 @@ h1{
     min-height: 100vh;
     gap: 5rem;
     grid-template-columns: repeat(auto-fit, minmax(250px, 296px));
-    grid-template-rows: repeat(auto-fit, minmax(250px, 440px));
+    grid-template-rows: repeat(auto-fit, minmax(250px, 500px));
     justify-content: center;
-    /* overflow: auto; */
      margin: 30px 60px;
-    /* padding: 0 20px; */
 }
 
 .card{
@@ -90,6 +89,11 @@ h1{
     transition: all 0.5s ease;
     overflow: auto;
     box-shadow: 7px 7px 15px 0px rgba(0,0,0,0.83);
+}
+
+.card:hover{
+    box-shadow: 10px 10px 31px -5px rgba(0,0,0,1);
+    transform: translateY(-4px);
 }
 
 .btn{
@@ -113,9 +117,6 @@ h1{
 
 }
 
-.card:hover{
-
-}
 
 #addBookCard{
     display:flex;
@@ -135,35 +136,15 @@ h1{
     transition: all 0.3s ease;
 }
 
-
-.form_card{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 350px;
-    padding: 30px 30px;
-    border-radius: 10px;
-    transition: all 0.5s ease;
-}
-
 #hidden{
-    /*Turn translate to -50%, -50% to display form in the middle.*/
-    /* transform: translate(-50%, -1500%); */
     opacity: 0;
     pointer-events: none;
     user-select: none;
 }
 
 #shown{
-    /*Turn translate to -50%, -50% to display form in the middle.*/
     position: fixed;
-    top: 55.7%;
     opacity: 1;
-    /* filter: blur(20px);
-    pointer-events: none;
-    user-select: none; */
 }
 
 .blur-filter{
@@ -173,19 +154,25 @@ h1{
     overflow-y: hidden;
 }
 
-#addBook{
+.addBook{
     display: flex;
-    background-color:var(--foreground);
-    font-size: 1.2rem;
     flex-direction: column;
-    max-width: 300px;
-    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:var(--foreground);
+    color: var(--background);
+    font-size: 1.5rem;
+    width: 300px;
+    padding: 40px;
     border: 2px solid var(--background);
-    border-radius: 4px;
-    box-shadow: 12px 10px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    box-shadow: 10px 10px 31px -5px rgba(0,0,0,1);
+    transition: all 0.5s ease;
 }
 
-#addBook > input, #addBook > select{
+.addBook > input, .addBook > select{
     margin-bottom: 15px;
     margin-top: 10px;
 }
@@ -197,8 +184,22 @@ h1{
 
 
 #submit{
-    width: 80px;
+    font-size: 1.3rem;
+    color: var(--foreground);
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    background: var(--background);
+    cursor: pointer;
+    border:none;
+    outline: none;
     align-self: center;
+    transition: all 0.5s ease;
+}
+
+#submit:hover{
+    background-color: #869fa4;
+    transform: translateY(-2px);
 }
 
 footer{

@@ -3,8 +3,7 @@ let authorInput = document.querySelector("#author");
 let pagesInput = document.querySelector("#pages");
 let readInput = document.getElementsByName("read");
 let submitBtn = document.querySelector("#submit");
-let form = document.querySelector("#addBook");
-let formCard = document.querySelector(".form_card");
+let form = document.querySelector(".addBook");
 let addBookCard = document.querySelector("#addBookCard");
 let mainContent = document.querySelector(".mainContent");
 let bodyWrapper = document.querySelector(".wrapper");
@@ -22,7 +21,7 @@ function showPlusCard() {
   div2.setAttribute("id", "addBookCard");
   div2.setAttribute("class", "card");
   div2.addEventListener("click", (e) => {
-    formCard.setAttribute("id", "shown");
+    form.setAttribute("id", "shown");
     bodyWrapper.classList.toggle("blur-filter");
     // body.style.filter = "blur(3px)";
   });
@@ -44,11 +43,11 @@ function showBook() {
     div.setAttribute("data-index", `${i}`);
 
     book.read == "true"
-      ? (div.innerHTML = `<img class="bookImg" src="book.png"><h1>${book.title}</h1>
-      <p>by <b>${book.author}</b>, ${book.pages} <b>pages.</b> I already <b>read</b> this book.</p>
+      ? (div.innerHTML = `<img class="bookImg" src="bookGreen.png"><h1>${book.title}.</h1>
+      <p>Written by <b>${book.author}</b><br>${book.pages} <b>Pages.</b><br>I already <b>read</b> this book.</p>
       <button class="btn" id="removeBtn" data-index=${i}>Remove</button>
       <button class="btn" id="editBtn" data-index=${i}>Update</button>`)
-      : (div.innerHTML = `<img class="bookImg" src="book.png"><h1>${book.title}</h1>
+      : (div.innerHTML = `<img class="bookImg" src="bookRed.png"><h1>${book.title}</h1>
       <p>by <b>${book.author}</b>, ${book.pages} <b>pages.</b> I haven't <b>read</b> this book.</p>
 
       <button class="btn" id="removeBtn" data-index=${i}>Remove</button>
@@ -75,13 +74,13 @@ submitBtn.addEventListener("click", (e) => {
   );
   Library.push(newBook);
   form.reset();
-  formCard.setAttribute("id", "hidden");
+  form.setAttribute("id", "hidden");
   showBook();
 });
 
 //First instance of the add book card.
 addBookCard.addEventListener("click", (e) => {
-  formCard.setAttribute("id", "shown");
+  form.setAttribute("id", "shown");
   bodyWrapper.classList.toggle("blur-filter");
 });
 
