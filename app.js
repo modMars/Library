@@ -7,7 +7,7 @@ let form = document.querySelector("#addBook");
 let formCard = document.querySelector(".form_card");
 let addBookCard = document.querySelector("#addBookCard");
 let mainContent = document.querySelector(".mainContent");
-let body = document.querySelector("body");
+let bodyWrapper = document.querySelector(".wrapper");
 let Library = [];
 /*Book Constructor*/
 function Book(title, author, pages, read) {
@@ -17,30 +17,13 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function showBook() {
-  /*This while loop takes care of clearing the mainContent from all its children, that way when we render the array of books (Library) we don't get any duplicates.*/
-  while (mainContent.lastChild) {
-    mainContent.removeChild(mainContent.lastChild);
-  }
-  Library.forEach((book) => {
-    let div = document.createElement("div");
-    div.setAttribute("class", "card");
-    console.log(book.read);
-    book.read == "true"
-      ? (div.textContent = `${book.title} by ${book.author}, ${book.pages} pages. I already read this book.`)
-      : (div.textContent = `${book.title} by ${book.author}, ${book.pages} pages. I haven't read this book.`);
-    mainContent.appendChild(div);
-    console.log(book);
-  });
-  showPlusCard();
-}
-
 function showPlusCard() {
   let div2 = document.createElement("div");
   div2.setAttribute("id", "addBookCard");
   div2.setAttribute("class", "card");
   div2.addEventListener("click", (e) => {
     formCard.setAttribute("id", "shown");
+    bodyWrapper.classList.toggle("blur-filter");
     // body.style.filter = "blur(3px)";
   });
   let plus_sign = document.createElement("i");
@@ -49,8 +32,34 @@ function showPlusCard() {
   mainContent.appendChild(div2);
 }
 
+//This function is ran the moment the submit button is clicked
+function showBook() {
+  /*This while loop takes care of clearing the mainContent from all its children, that way when we render the array of books (Library) we don't get any duplicates.*/
+  while (mainContent.lastChild) {
+    mainContent.removeChild(mainContent.lastChild);
+  }
+  Library.forEach((book, index) => {
+    let div = document.createElement("div");
+    div.setAttribute("class", "card");
+    div.setAttribute("data-index", `${index}`);
+    console.log(book.read);
+    book.read == "true"
+      ? (div.innerHTML = `<img class="bookImg" src="book.png"><h1>${book.title}</h1><p>by <b>${book.author}</b>, ${book.pages} <b>pages.</b> I already <b>read</b> this book.</p>`)
+      : (div.innerHTML = `<img class="bookImg" src="book.png"><h1>${book.title}</h1><p>by <b>${book.author}</b>, ${book.pages} <b>pages.</b> I haven't <b>read</b> this book.</p><button></button>`);
+    // let img = document.createElement("img");
+    // img.setAttribute("src", "book.png");
+    // img.setAttribute("class", "bookImg");
+    // div.appendChild(img);
+    mainContent.appendChild(div);
+    console.log(book);
+  });
+  showPlusCard();
+}
+
+//Saves a book added by the user.
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  bodyWrapper.classList.toggle("blur-filter");
   const Yes = document.querySelector("#Yes");
   const No = document.querySelector("#No");
   Yes.checked === true ? (readInput = Yes) : (readInput = No);
@@ -67,7 +76,9 @@ submitBtn.addEventListener("click", (e) => {
   showBook();
 });
 
+//First instance of the add book card.
 addBookCard.addEventListener("click", (e) => {
   formCard.setAttribute("id", "shown");
+  bodyWrapper.classList.toggle("blur-filter");
   // body.style.filter = "blur(3px)";
 });

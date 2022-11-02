@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/d57f01c9bf.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="wrapper">
     <header>
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
+        <span class="logo"><i class="fa-sharp fa-solid fa-book"></i></span>
+        <h1 class="logo">Consume Knowledge</h1>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </div>
     </nav>
 </header>
     <main class="mainContent">
@@ -23,14 +27,14 @@
             <i class="fa-solid fa-plus"></i>
         </div>
 
+
         
     </main>
     <footer>
-        <ul>
-            <li><a href="https://github.com/modMars">modMars</a></li>
-        </ul>
+        <a href="https://github.com/modMars">modMars <i class="fa-brands fa-github"></i></a>
     </footer>
-
+    </div>
+    
     <div class="form_card" id="hidden">
     <form action="" id="addBook">
         <label for="title">What's the title of the book?</label>
