@@ -38,22 +38,26 @@ function showBook() {
   while (mainContent.lastChild) {
     mainContent.removeChild(mainContent.lastChild);
   }
-  Library.forEach((book, index) => {
+  Library.forEach((book, i) => {
     let div = document.createElement("div");
     div.setAttribute("class", "card");
-    div.setAttribute("data-index", `${index}`);
-    console.log(book.read);
+    div.setAttribute("data-index", `${i}`);
+
     book.read == "true"
-      ? (div.innerHTML = `<img class="bookImg" src="book.png"><h1>${book.title}</h1><p>by <b>${book.author}</b>, ${book.pages} <b>pages.</b> I already <b>read</b> this book.</p>`)
-      : (div.innerHTML = `<img class="bookImg" src="book.png"><h1>${book.title}</h1><p>by <b>${book.author}</b>, ${book.pages} <b>pages.</b> I haven't <b>read</b> this book.</p><button></button>`);
-    // let img = document.createElement("img");
-    // img.setAttribute("src", "book.png");
-    // img.setAttribute("class", "bookImg");
-    // div.appendChild(img);
+      ? (div.innerHTML = `<img class="bookImg" src="book.png"><h1>${book.title}</h1>
+      <p>by <b>${book.author}</b>, ${book.pages} <b>pages.</b> I already <b>read</b> this book.</p>
+      <button class="btn" id="removeBtn" data-index=${i}>Remove</button>
+      <button class="btn" id="editBtn" data-index=${i}>Update</button>`)
+      : (div.innerHTML = `<img class="bookImg" src="book.png"><h1>${book.title}</h1>
+      <p>by <b>${book.author}</b>, ${book.pages} <b>pages.</b> I haven't <b>read</b> this book.</p>
+
+      <button class="btn" id="removeBtn" data-index=${i}>Remove</button>
+      <button class="btn" id="editBtn" data-index=${i}>Update</button>`);
+
     mainContent.appendChild(div);
-    console.log(book);
   });
   showPlusCard();
+  buttonListeners();
 }
 
 //Saves a book added by the user.
@@ -71,7 +75,6 @@ submitBtn.addEventListener("click", (e) => {
   );
   Library.push(newBook);
   form.reset();
-  // body.style.filter = "blur(0px)";
   formCard.setAttribute("id", "hidden");
   showBook();
 });
@@ -80,5 +83,28 @@ submitBtn.addEventListener("click", (e) => {
 addBookCard.addEventListener("click", (e) => {
   formCard.setAttribute("id", "shown");
   bodyWrapper.classList.toggle("blur-filter");
-  // body.style.filter = "blur(3px)";
 });
+
+function buttonListeners() {
+  let removeBtn = document.querySelectorAll("#removeBtn");
+  removeBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      let index = e.target.dataset.index;
+      console.log(index);
+      console.log(Library[index]);
+      Library.splice(index, 1);
+      showBook();
+    });
+  });
+
+  let editBtn = document.querySelectorAll("#editBtn");
+  editBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      let index = e.target.dataset.index;
+      Library[index].read == "true"
+        ? (Library[index].read = "false")
+        : (Library[index].read = "true");
+      showBook();
+    });
+  });
+}

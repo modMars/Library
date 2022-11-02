@@ -78,6 +78,7 @@ h1{
 }
 
 .card{
+    position: relative;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -91,6 +92,26 @@ h1{
     box-shadow: 7px 7px 15px 0px rgba(0,0,0,0.83);
 }
 
+.btn{
+    position: absolute;
+    font-size: 0.9rem;
+    color: var(--foreground);
+    border-radius: 5px;
+    top: 89%;
+    left: 8%;
+    width: 80px;
+    height: 30px;
+    background: var(--background);
+    cursor: pointer;
+    border:none;
+    outline: none;
+}
+
+#editBtn{
+    position: absolute;
+    left: 66%;
+
+}
 
 .card:hover{
 
