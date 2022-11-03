@@ -2,11 +2,10 @@ let titleInput = document.querySelector("#title");
 let authorInput = document.querySelector("#author");
 let pagesInput = document.querySelector("#pages");
 let readInput = document.getElementsByName("read");
-let submitBtn = document.querySelector("#submit");
-let form = document.querySelector(".addBook");
-let addBookCard = document.querySelector("#addBookCard");
-let mainContent = document.querySelector(".mainContent");
-let bodyWrapper = document.querySelector(".wrapper");
+const form = document.querySelector(".addBook");
+const addBookCard = document.querySelector("#addBookCard");
+const mainContent = document.querySelector(".mainContent");
+const bodyWrapper = document.querySelector(".wrapper");
 let Library = [];
 /*Book Constructor*/
 function Book(title, author, pages, read) {
@@ -64,7 +63,7 @@ function showBook() {
 }
 
 //Saves a book added by the user.
-submitBtn.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   bodyWrapper.classList.toggle("blur-filter");
   const Yes = document.querySelector("#Yes");
