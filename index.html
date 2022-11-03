@@ -17,11 +17,11 @@
     <div class="wrapper">
     <header>
     <nav>
-        <span class="logo"><i class="fa-sharp fa-solid fa-book"></i></span>
         <h1 class="logo">The Library of Kos</h1>
-        <div class="links">
+        <span class="logo"><i class="fa-sharp fa-solid fa-book"></i></span>
+        <!-- <div class="links">
             <a href="https://github.com/modMars">Home</a>
-        </div>
+        </div> -->
     </nav>
 </header>
     <main class="mainContent">
@@ -32,25 +32,25 @@
         
     </main>
     <footer>
-        <a href="https://github.com/modMars">modMars <i class="fa-brands fa-github"></i></a>
+        <a href="https://github.com/modMars" id="footerLink">modMars <i class="fa-brands fa-github"></i></a>
     </footer>
     </div>
     
     <form action="" class="addBook" id="hidden">
         <label for="title">What's the title of the book?</label>
-        <input type="text" id="title" name="title">
+        <input type="text" id="title" name="title" minlength="1" maxlength="30" required>
         <label for="author">Who's the author of the book?</label>
-        <input type="text" id="author" name="author">
+        <input type="text" id="author" name="author" minlength="1" maxlength="30" required>
         <label for="pages">How many pages does the book have?</label>
-        <input type="number" id="pages" min="1" name="pages">
+        <input type="number" id="pages" min="1" name="pages" required>
         <label for="read">Have you read the book?</label>
             <span id="radial">
                 <label for="true">Yes</label>
-                <input type="radio" name="read" id="Yes" value=true>
+                <input type="radio" name="read" id="Yes" value=true required>
             </span>
             <span id="radial">
                 <label for="false">No</label>
-                <input type="radio" name="read" id="No" value=false>
+                <input type="radio" name="read" id="No" value=false required>
             </span>
         <button type="submit" id="submit" >Submit!</button>
         </nav>

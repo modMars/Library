@@ -31,7 +31,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     background-color: var(--accent);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     top: 10px;
     width: 100%;
     height: 70px;
@@ -62,8 +62,11 @@ h1{
 .bookImg{
     display: block;
     transition:all 1s ease;
-    height: 50%;
-    width:100%;
+    justify-self: center;
+    align-self: center;
+    height: 25%;
+    width:38%;
+    margin-bottom: 0px;
 }
 
 .mainContent{
@@ -80,15 +83,21 @@ h1{
     position: relative;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    justify-content: space-between;
     padding: 20px;
     color: black;
     border-radius: 10px;
     background-color: var(--foreground);
     min-height: 400px;
     transition: all 0.5s ease;
+    animation-delay: 500ms;
     overflow: auto;
     box-shadow: 7px 7px 15px 0px rgba(0,0,0,0.83);
+}
+
+.card p{
+    font-size: 1.3rem;
+    margin: 1px 0;
 }
 
 .card:hover{
@@ -96,25 +105,35 @@ h1{
     transform: translateY(-4px);
 }
 
+.title::before{
+    display: block;
+    content: "";
+    width:100%;
+    height: 2px;
+    margin-bottom: 7px;
+    background: var(--background);
+}
+
 .btn{
-    position: absolute;
-    font-size: 0.9rem;
+    /* position: absolute;
+    top: 89%;
+    left: 8%; */
+    font-size: 1.1rem;
+    font-weight: bolder;
     color: var(--foreground);
     border-radius: 5px;
-    top: 89%;
-    left: 8%;
-    width: 80px;
-    height: 30px;
+    width: 100%;
+    margin-top: 2px;
+    height: 34px;
     background: var(--background);
     cursor: pointer;
     border:none;
     outline: none;
+    transition: all 0.5s ease;
 }
 
-#editBtn{
-    position: absolute;
-    left: 66%;
-
+.btn:hover{
+    background-color: #9eb6b3;
 }
 
 
@@ -126,12 +145,12 @@ h1{
 }
 
 #addBookCard:hover > .fa-plus{
-    font-size: 6.5rem;
+    color:  #86afa4;
 }
 
 .fa-plus{
     font-size: 5rem;
-    color: var(--accent);
+    color: #869fa4;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -210,4 +229,13 @@ footer{
     background-color: var(--accent);
     height: 50px;
     width: 100%;
+
+}
+
+#footerLink > .fa-github{
+    transition: all 1s ease;
+}
+
+#footerLink:hover > .fa-github{
+    transform: rotate(360deg);
 }
