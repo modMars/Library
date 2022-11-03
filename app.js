@@ -43,13 +43,13 @@ function showBook() {
     div.setAttribute("data-index", `${i}`);
 
     book.read == "true"
-      ? (div.innerHTML = `<img class="bookImg" src="/bookGreen.png"><h1 class="title">${book.title}</h1>
+      ? (div.innerHTML = `<img class="bookImg" src="./images/bookGreen.png"><h1 class="title">${book.title}</h1>
       <p>Written by <b>${book.author}</b><br>${book.pages} <b>Pages</b><br>I already <b>read</b> this book.</p>
       <div class="btnGroup">
       <button class="btn" id="removeBtn" data-index=${i}>Remove</button>
       <button class="btn" id="editBtn" data-index=${i}>Update</button>
       </div>`)
-      : (div.innerHTML = `<img class="bookImg" src="/bookRed.png"><h1 class="title">${book.title}</h1>
+      : (div.innerHTML = `<img class="bookImg" src="./images/bookRed.png"><h1 class="title">${book.title}</h1>
       <p>Written by <b>${book.author}</b><br>${book.pages} <b>Pages.</b><br> I haven't <b>read</b> this book.</p>
 
       <div class="btnGroup">
