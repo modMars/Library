@@ -1,11 +1,11 @@
 :root{
     box-sizing: border-box;
     color: white;
-    /*--background: #2f2f3f;
-      --accent: #9BBBE3*/
+    --text: #3f3f3f;
     --background: #758e93;
     --accent: #9eb3b3;
     --foreground: #c9d8d5;
+    --highlight: #86afa4;
 
 }
 
@@ -22,7 +22,7 @@ body{
 }
 
 a{
-    color: #3f3f3f;
+    color: var(--text);
     text-decoration: none;
 }
 
@@ -31,6 +31,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     background-color: var(--accent);
+    color: var(--text);
     font-size: 1.4rem;
     top: 10px;
     width: 100%;
@@ -44,8 +45,7 @@ nav{
 .logo{
     display: inline;
     font-size: 1.6rem;
-    margin: 0px 20px;
-    color: #3f3f3f;
+    margin: 0px 20px; 
 }
 
 
@@ -59,22 +59,28 @@ h1{
     font-size: 1.9rem;
 }
 
+h2{
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.9rem;
+}
+
 .bookImg{
     display: block;
     transition:all 1s ease;
     justify-self: center;
     align-self: center;
-    height: 25%;
-    width:38%;
+    height: 110px;
+    width: 98px;
     margin-bottom: 0px;
 }
 
 .mainContent{
     display: grid;
     min-height: 100vh;
-    gap: 5rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 296px));
-    grid-template-rows: repeat(auto-fit, minmax(250px, 500px));
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 320px));
+    grid-template-rows: minmax(500px, min-content);
     justify-content: center;
      margin: 30px 60px;
 }
@@ -85,19 +91,18 @@ h1{
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
-    color: black;
+    color: var(--text);
     border-radius: 10px;
     background-color: var(--foreground);
-    min-height: 400px;
     transition: all 0.5s ease;
     animation-delay: 500ms;
-    overflow: auto;
+    overflow-wrap: break-word;
     box-shadow: 7px 7px 15px 0px rgba(0,0,0,0.83);
 }
 
 .card p{
     font-size: 1.3rem;
-    margin: 1px 0;
+    margin: 1rem 0;
 }
 
 .card:hover{
@@ -133,7 +138,7 @@ h1{
 }
 
 .btn:hover{
-    background-color: #9eb6b3;
+    background-color: var(--highlight);
 }
 
 
@@ -144,16 +149,17 @@ h1{
     cursor: pointer;
 }
 
-#addBookCard:hover > .fa-plus{
-    color:  #86afa4;
-}
-
 .fa-plus{
     font-size: 5rem;
-    color: #869fa4;
+    color: var(--background);
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
+#addBookCard:hover > .fa-plus{
+    color:  var(--highlight);
+}
+
 
 #hidden{
     opacity: 0;
@@ -170,7 +176,6 @@ h1{
     filter: blur(5px);
     pointer-events: none;
     user-select: none;
-    overflow-y: hidden;
 }
 
 .addBook{
@@ -217,7 +222,7 @@ h1{
 }
 
 #submit:hover{
-    background-color: #869fa4;
+    background-color: var(--highlight);
     transform: translateY(-2px);
 }
 
