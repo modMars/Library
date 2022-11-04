@@ -38,41 +38,51 @@ form.addEventListener("submit", (e) => {
   renderBooks();
 });
 
-//
+/*This function clears the current book cards on screen to avoid any duplicates, after doing so, we create a book card for each book in the Library array, finally we call the showPlusCard() function and also add listeners to the 'remove' and 'update' buttons on the card.*/
 function renderBooks() {
-  /*This while loop takes care of clearing the mainContent from all its children, that way when we render the array of books we don't get any duplicates.*/
   while (mainContent.lastChild) {
     mainContent.removeChild(mainContent.lastChild);
   }
   Library.forEach((book, i) => {
     let div = document.createElement("div");
     div.setAttribute("class", "card");
-
-    book.read == "true"
-      ? (div.innerHTML = `<img class="bookImg" src="./images/bookGreen.png">
-        <h2 class="title">${book.title}</h2>
-        <p>Written by <b>${book.author}</b><br>
-        ${book.pages} <b>Pages</b><br>
-        I already <b>read</b> this book.</p>
-        <div class="btnGroup">
-          <button class="btn" id="removeBtn" data-index=${i}>Remove</button>
-          <button class="btn" id="editBtn" data-index=${i}>Update</button>
-        </div>`)
-      : (div.innerHTML = `<img class="bookImg" src="./images/bookRed.png">
-        <h2 class="title">${book.title}</h2>
-        <p>Written by <b>${book.author}</b><br>
-        ${book.pages} <b>Pages.</b><br>
-        I haven't <b>read</b> this book.</p>
-        <div class="btnGroup">
-          <button class="btn" id="removeBtn" data-index=${i}>Remove</button>
-          <button class="btn" id="editBtn" data-index=${i}>Update</button>
-        </div>`);
+    let img = document.createElement("img");
+    img.className = "bookImg";
+    book.read === "true"
+      ? img.setAttribute("src", "./images/bookGreen.png")
+      : img.setAttribute("src", "./images/bookRed.png");
+    div.appendChild(img);
+    let h2 = document.createElement("h2");
+    h2.className = "title";
+    h2.textContent = `${book.title}`;
+    div.appendChild(h2);
+    let p = document.createElement("p");
+    p.textContent = `Written by ${book.author}
+    ${book.pages} Pages
+    I already read this book.`;
+    div.appendChild(p);
+    let btnGroup = document.createElement("div");
+    btnGroup.className = "btnGroup";
+    let rmvBtn = document.createElement("button");
+    rmvBtn.className = "btn";
+    rmvBtn.setAttribute("node-index", `${i}`);
+    rmvBtn.setAttribute("id", "removeBtn");
+    rmvBtn.textContent = "Remove";
+    let editBtn = document.createElement("button");
+    editBtn.className = "btn";
+    editBtn.setAttribute("node-index", `${i}`);
+    editBtn.setAttribute("id", "editBtn");
+    editBtn.textContent = "Update";
+    btnGroup.appendChild(rmvBtn);
+    btnGroup.appendChild(editBtn);
+    div.appendChild(btnGroup);
     mainContent.appendChild(div);
   });
   showPlusCard();
   addButtonListeners();
 }
 
+/*Takes the data-index attribute on the targetted button to know which entry of the library to remove.*/
 function addButtonListeners() {
   let removeBtn = document.querySelectorAll("#removeBtn");
   removeBtn.forEach((btn) => {
@@ -84,7 +94,7 @@ function addButtonListeners() {
       renderBooks();
     });
   });
-
+  /*Takes de data-index attribute on the targetted button to know which entry of the library to update.*/
   let editBtn = document.querySelectorAll("#editBtn");
   editBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -110,4 +120,5 @@ function showPlusCard() {
   mainContent.appendChild(div);
 }
 
+//First instace of the Plus Card
 showPlusCard();
