@@ -1,4 +1,5 @@
-# Library of Kos
+<p align="center"> <img src="https://user-images.githubusercontent.com/90658669/200049606-172f00de-99c4-4f15-b147-88dde33d5af3.png"></p>
+<p align="center"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/modMars/Library?style=for-the-badge"></p>
 
 ## Basic Overview
 
