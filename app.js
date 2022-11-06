@@ -65,12 +65,12 @@ function renderBooks() {
     btnGroup.className = "btnGroup";
     let rmvBtn = document.createElement("button");
     rmvBtn.className = "btn";
-    rmvBtn.setAttribute("node-index", `${i}`);
+    rmvBtn.setAttribute("data-index", `${i}`);
     rmvBtn.setAttribute("id", "removeBtn");
     rmvBtn.textContent = "Remove";
     let editBtn = document.createElement("button");
     editBtn.className = "btn";
-    editBtn.setAttribute("node-index", `${i}`);
+    editBtn.setAttribute("data-index", `${i}`);
     editBtn.setAttribute("id", "editBtn");
     editBtn.textContent = "Update";
     btnGroup.appendChild(rmvBtn);
