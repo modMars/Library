@@ -1,9 +1,9 @@
-import { createBook } from "./books";
-import { displayManager, dom } from "./dom";
-import "./normalize.css";
-import "./style.css";
+import { createBook } from "./modules/books";
+import { displayManager, dom } from "./modules/dom";
+import "./style/normalize.css";
+import "./style/style.css";
 
-/*Array of books*/
+//Library module, includes several functions that help modify the contents within the library.
 const library = (() => {
   let storage = [];
   const addNewBook = (book) => {
@@ -20,11 +20,11 @@ const library = (() => {
   return { storage, addNewBook, removeBook, toggleReadStatus };
 })();
 
-//Takes values from the form pop up and stores them in a new Book object
+//Add form event listener
 const form = document.querySelector(".addBook");
 form.addEventListener("submit", dom.gatherFormData);
 
 //First instace of the Plus Card
-displayManager.showPlusCard();
+displayManager.appendPlusCard();
 
 export { library };

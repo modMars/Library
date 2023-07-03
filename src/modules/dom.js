@@ -1,7 +1,7 @@
-import { library } from ".";
-import bookGreen from "./assets/bookGreen.png";
-import bookRed from "./assets/bookRed.png";
-import { bookFactory } from "./books";
+import { library } from "..";
+import bookGreen from "../assets/bookGreen.png";
+import bookRed from "../assets/bookRed.png";
+import { bookFactory } from "../modules/books.js";
 
 const dom = (() => {
   /*Changes the body wrapper's attribute to toggle a blur effect with css*/
@@ -44,7 +44,7 @@ const dom = (() => {
 
 const displayManager = (() => {
   const mainContent = document.querySelector(".mainContent");
-  /*This function clears the current book cards on screen to avoid any duplicates, after doing so, we create a book card for each book in the Library array, finally we call the showPlusCard() function and also add listeners to the 'remove' and 'update' buttons on the card.*/
+  /*This function clears the current book cards on screen to avoid any duplicates, after doing so, we create a book card for each book in the Library array, finally we call the appendPlusCard() function and also add listeners to the 'remove' and 'update' buttons on the card.*/
   function deleteDisplayedElements() {
     while (mainContent.lastChild) {
       mainContent.removeChild(mainContent.lastChild);
@@ -93,11 +93,11 @@ const displayManager = (() => {
       div.appendChild(btnGroup);
       mainContent.appendChild(div);
     });
-    showPlusCard();
+    appendPlusCard();
     addButtonListeners();
   }
   /*Append the 'add book' card into the main content*/
-  function showPlusCard() {
+  function appendPlusCard() {
     let div = document.createElement("div");
     div.setAttribute("id", "addBookCard");
     div.setAttribute("class", "card");
@@ -129,7 +129,7 @@ const displayManager = (() => {
       });
     });
   }
-  return { renderBooks, showPlusCard };
+  return { renderBooks, appendPlusCard };
 })();
 
 export { displayManager, dom };
