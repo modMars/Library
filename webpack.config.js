@@ -11,6 +11,7 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
+      favicon: "./src/assets/favicon1.ico",
     }),
   ],
   module: {
