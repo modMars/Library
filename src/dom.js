@@ -1,7 +1,7 @@
-import { Library } from ".";
+import { library } from ".";
 import bookGreen from "./assets/bookGreen.png";
 import bookRed from "./assets/bookRed.png";
-import { createBook } from "./books";
+import { bookFactory } from "./books";
 
 const dom = (() => {
   /*Changes the body wrapper's attribute to toggle a blur effect with css*/
@@ -21,7 +21,6 @@ const dom = (() => {
   /*Gathers the data off of the form, pushes a new book object into the library and re-renders the library on screen*/
   const gatherFormData = (e) => {
     e.preventDefault();
-    toggleBlur();
     let titleInput = document.querySelector("#title");
     let authorInput = document.querySelector("#author");
     let pagesInput = document.querySelector("#pages");
@@ -29,13 +28,14 @@ const dom = (() => {
     const Yes = document.querySelector("#Yes");
     const No = document.querySelector("#No");
     Yes.checked === true ? (readInput = Yes) : (readInput = No);
-    const newBook = createBook(
+    const book = bookFactory(
       titleInput.value,
       authorInput.value,
       pagesInput.value,
       readInput.value
     );
-    Library.push(newBook);
+    library.addNewBook(book);
+    toggleBlur();
     toggleForm();
     displayManager.renderBooks();
   };
@@ -45,11 +45,15 @@ const dom = (() => {
 const displayManager = (() => {
   const mainContent = document.querySelector(".mainContent");
   /*This function clears the current book cards on screen to avoid any duplicates, after doing so, we create a book card for each book in the Library array, finally we call the showPlusCard() function and also add listeners to the 'remove' and 'update' buttons on the card.*/
-  function renderBooks() {
+  function deleteDisplayedElements() {
     while (mainContent.lastChild) {
       mainContent.removeChild(mainContent.lastChild);
     }
-    Library.forEach((book, i) => {
+  }
+
+  function renderBooks() {
+    deleteDisplayedElements();
+    library.storage.forEach((book, i) => {
       let div = document.createElement("div");
       div.setAttribute("class", "card");
       let img = document.createElement("img");
@@ -111,18 +115,16 @@ const displayManager = (() => {
     removeBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         let index = e.target.dataset.index;
-        Library.splice(index, 1);
+        library.removeBook(index);
         renderBooks();
       });
     });
-    /*Takes de data-index attribute on the targetted button to know which entry of the library to update.*/
+
     let editBtn = document.querySelectorAll("#editBtn");
     editBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         let index = e.target.dataset.index;
-        Library[index].read == "true"
-          ? (Library[index].read = "false")
-          : (Library[index].read = "true");
+        library.toggleReadStatus(index);
         renderBooks();
       });
     });

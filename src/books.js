@@ -1,7 +1,7 @@
 /*Book Constructor*/
 
-const createBook = (title, author, pages, read) => {
+const bookFactory = (title, author, pages, read) => {
   return { title, author, pages, read };
 };
 
-export { createBook };
+export { bookFactory };
